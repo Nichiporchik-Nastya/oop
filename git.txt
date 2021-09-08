@@ -42,3 +42,7 @@
 	-Отмена последнего коммита
 		$ git revert HEAD --no-edit
 		$ git revert <hash> --no-edit (отойти к коммиту с таким хэшем)	
+	-Отменить добаление файла в стейдж
+		$ git reset git.txt
+		
+		$ git rerset --soft HEDA^1 
