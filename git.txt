@@ -5,6 +5,9 @@
 	-ll/ls вывести содержимое ветки в столбик/ в строчку
 	-cat <file> вывести в консоль содержимое файла
 	-создать файл echo 'content' >> new.file
+	-cd D:/myProject перейти в папку
+	-git checkout <hash> перейти к коммиту с таким хэшем
+
 Проверка версии:
 	$ git version (git version 2.33.0.windows.2)
 
