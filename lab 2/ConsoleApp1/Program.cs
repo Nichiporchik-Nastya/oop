@@ -299,13 +299,8 @@ namespace ConsoleApp1
                 }
                 char letter = Convert.ToChar(myStr.Substring(0, 1));
                 var rez = (max, min, sum, letter);
-
                 return rez;
             }
-
-            
-
-
         }
     }
 }
