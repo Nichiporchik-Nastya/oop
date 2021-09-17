@@ -72,8 +72,8 @@ namespace ConsoleApp1
             /*e. Продемонстрируйте пример работы с Nullable переменной*/
 
             byte? N = null; //целочисленный тип со значением null
-            N = 15;
-            Console.WriteLine(N + "\n"); // 15; может быть и null, и число
+            //N = 15;
+            Console.WriteLine("Значение переменной NullAble"+N + "\n"); // 15; может быть и null, и число
 
             //Строки
 
@@ -82,6 +82,8 @@ namespace ConsoleApp1
             string P = "Привет";
             string H = "Hello";
             string Q = "Hello";
+
+            Console.WriteLine("\nРезультаты сравнения строк: ");
 
             Console.WriteLine(String.Compare(P, H)); //1, первая строка следует за второй в порядке сортировки
             Console.WriteLine(String.Compare(H, P)); //-1, Первая строка предшествует второй в порядке сортировки или первая строка имеет значение null.
@@ -96,6 +98,8 @@ namespace ConsoleApp1
                 копирование, выделение подстроки, разделение строки на слова,
                 вставки подстроки в заданную позицию, удаление заданной
                 подстроки*/
+
+            Console.WriteLine("\nРабота со строками: ");
 
             string s = "В траве сидел кузнечик";
 
@@ -149,12 +153,16 @@ namespace ConsoleApp1
             str.Remove(5, 1); //добавление символов в определённых позициях
             str.Remove(6, 1);
             str.Remove(9, 1);
+
+            Console.WriteLine("\nРезультат работы со StringBuilder: ");
             Console.WriteLine(str);
 
             //Массивы
 
             /*a. Создайте целый двумерный массив и выведите его на консоль в
             отформатированном виде (матрица). */
+
+            Console.WriteLine("\nВывод матрицы: ");
 
             int[,] mas = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } }; //объявление с заданием значений
 
@@ -173,7 +181,9 @@ namespace ConsoleApp1
             содержимое, длину массива. Поменяйте произвольный элемент
             (пользователь определяет позицию и значение)*/
 
-            string[] strArr = {"Добрый день", "Как дела?", "Неплохо, спасибо" };
+            Console.WriteLine("\nЗамена строк: ");
+
+            string[] strArr = {"Добрый день", "Как дела?", "Неплохо", "Cпасибо" };
             int x = 0;
             foreach (string strAr in strArr)
             {
@@ -194,6 +204,8 @@ namespace ConsoleApp1
             /*c. Создайте ступечатый (не выровненный) массив вещественных
             чисел с 3-мя строками, в каждой из которых 2, 3 и 4 столбцов
             соответственно. Значения массива введите с консоли*/
+
+            Console.WriteLine("\nСтупенчатый массив ");
 
             // Объявление ступенчатого массива
             int[][] stepsArr = new int[3][];
@@ -224,7 +236,75 @@ namespace ConsoleApp1
             /*d. Создайте неявно типизированные переменные для хранения
             массива и строки*/
 
-            var 
+            var Nsting = "";
+            var Narray = new object[0];
+
+            //Кортежи
+
+            /*a. Задайте кортеж из 5 элементов с типами int, string, char, string,
+            ulong*/
+            /*b. Сделайте именование его элементов*/
+            /*c. Выведите кортеж на консоль целиком и выборочно (1, 3, 4
+            элементы)*/
+            /*d. Выполните распаковку кортежа в переменные.*/
+
+            Console.WriteLine("\nРезультаты работы с кортежами: ");
+
+            var Kort = (integer: 500, myString: "Okey", symbol: '♀', "Nope", longNumber: 36578921546); //задание кортежа и именование почти всех элементов
+            
+            Console.WriteLine(Kort.Item4, Kort.integer); //вывод четвёртого по ключевому слову и первого по названию
+            Console.WriteLine(Kort.symbol); //вывод 3
+            Console.WriteLine(Kort); //вывод целиком
+
+            var (integer, mySting, symbol, myString2, longNumber) = Kort; //распаковка в переменные
+            Console.WriteLine(myString2);
+
+            /*e. Сравните два кортежа.*/
+
+            var firstTuple = Tuple.Create(10, 5);
+            var secondTuple = Tuple.Create(5, 15);
+            var firstTuple2 = Tuple.Create(10, 5);
+
+            bool res = firstTuple.Equals(secondTuple); //false
+            res = firstTuple.Equals(firstTuple2); //true
+            Console.WriteLine(res);
+
+            //Локальная функция
+
+            /*Создайте локальную функцию в main и вызовите ее. Формальные
+            параметры функции – массив целых и строка. Функция должна вернуть
+            кортеж, содержащий: максимальный и минимальный элементы массива,
+            сумму элементов массива и первую букву строки*/
+
+            int[] mas2 = { -1, 3, 25, 10, -8, 0};
+            string myStr = "Сегодня пятница!";
+
+            Console.WriteLine("\nРезультат выполнения локальной функции: ");
+            Console.WriteLine(MinMaxSumFirst(mas2, myStr));
+
+            static (int max, int min, int sum, char letter) MinMaxSumFirst (int[] mas2, string myStr)
+            {
+                int max = -999, min = 999, sum =0;
+                foreach (int m2 in mas2)
+                {
+                    sum += m2;
+                    if (m2 > max)
+                    {
+                        max = m2;
+                    }
+                    if (m2 < min)
+                    {
+                        min = m2;
+                    }
+                }
+                char letter = Convert.ToChar(myStr.Substring(0, 1));
+                var rez = (max, min, sum, letter);
+
+                return rez;
+            }
+
+            
+
 
         }
     }
